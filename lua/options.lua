@@ -64,3 +64,10 @@ vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.pumheight = 10
 -- 永远显示 tabline
 vim.o.showtabline = 2
+vim.o.showmode = false
+
+
+-- nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
