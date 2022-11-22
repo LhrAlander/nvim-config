@@ -25,6 +25,10 @@ packer.startup(
       tag = '0.1.0',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use({
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+    })
   end,
   {
     display = {
