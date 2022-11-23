@@ -1,31 +1,58 @@
-local status, lsp_installer = pcall(require, 'nvim-lsp-installer')
+local status, lsp_config = pcall(require, 'lspconfig')
 if not status then
   vim.notify('似乎没有安装 nvim-lsp-installer')
   return
 end
 
-local servers = {
-  sumneko_lua = require('lsp.config.lua')
-}
 
-for name, _ in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
-    end
+local on_attach = function(client, bufnr)
+   -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  local map_fn = function(a1, a2, a3)
+    vim.keymap.set(a1, a2, a3, bufopts)
   end
+  require('keybindings').map_lsp(map_fn)
 end
 
-lsp_installer.on_server_ready(function(server)
-    local config = servers[server.name]
-    if config == nil then
-        return
-    end
-    if config.on_setup then
-        config.on_setup(server)
-    else
-        server:setup({})
-    end
-end)
+local lsp_flags = {
+  debounce_text_change = 150
+}
+
+require('lspconfig')['tsserver'].setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  filetypes = {"typescriptreact", "typescript"}
+})
+
+
+local runtime_path = vim.split(package.path, ';')
+require('lspconfig')['sumneko_lua'].setup({
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Setup your lua path
+                path = runtime_path,
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file('', true),
+                checkThirdParty = false,
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+    flags = lsp_flags,
+    on_attach = on_attach,
+})
+
+

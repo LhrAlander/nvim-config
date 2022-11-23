@@ -36,7 +36,6 @@ function (use)
   })
   -- lsp
   use('williamboman/nvim-lsp-installer')
-  use({ 'neovim/nvim-lspconfig' })
   -- 补全引擎
   use("hrsh7th/nvim-cmp")
   -- snippet 引擎

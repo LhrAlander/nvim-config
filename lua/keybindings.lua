@@ -74,18 +74,17 @@
 
   -- lsp
   pluginKeys.map_lsp = function(mapbuf)
-    mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt)
-    mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt)
-    mapbuf("n", "<leader>gd", "<cmd>Lspsaga preview_definition<CR>", opt)
-    mapbuf("n", "<leader>gh", "<cmd>Lspsaga hover_doc<CR>", opt)
-    mapbuf("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-    mapbuf("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-    mapbuf("n", "<leader>gr", "<cmd>Lspsaga lsp_finder<CR>", opt)
-
-    mapbuf("n", "<leader>gp", "<cmd>Lspsaga show_line_diagnostics<CR>", opt)
-    mapbuf("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opt)
-    mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opt)
-    mapbuf("n", "<S-¬>", "<cmd>lua vim.diagnostic.formatting()<CR>", opt)
+    mapbuf("n", "<leader>rn", "<cmd>Lspsaga rename<CR>")
+    mapbuf("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+    mapbuf("n", "<leader>gd", "<cmd>Lspsaga preview_definition<CR>")
+    mapbuf("n", "<leader>gh", "<cmd>Lspsaga hover_doc<CR>")
+    mapbuf("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+    mapbuf("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+    mapbuf("n", "<leader>gr", "<cmd>Lspsaga lsp_finder<CR>")
+    mapbuf("n", "<leader>gp", "<cmd>Lspsaga show_line_diagnostics<CR>")
+    mapbuf("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+    mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+    mapbuf("n", "<S-¬>", "<cmd>lua vim.diagnostic.formatting()<CR>")
   end
 
   -- cmp
