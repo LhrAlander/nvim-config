@@ -53,6 +53,8 @@ function (use)
   use("onsails/lspkind-nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("tami5/lspsaga.nvim" )
+  -- lsp
+  use 'neovim/nvim-lspconfig'
 end,
 {
   display = {
