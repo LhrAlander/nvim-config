@@ -6,13 +6,21 @@ end
 
 lualine.setup({
   options = {
-    theme = "onedark",
+    icons_enabled = true,
+    -- theme = "solarized_dark",
+    theme = "tokyonight",
     component_separators = { left = "|", right = "|" },
     -- https://github.com/ryanoasis/powerline-extra-symbols
     section_separators = { left = " ", right = "" },
   },
   extensions = { "nvim-tree", "toggleterm" },
   sections = {
+    lualine_a = {
+      'mode',
+    },
+    lualine_b = {
+      'branch'
+    },
     lualine_c = {
       "filename",
       {

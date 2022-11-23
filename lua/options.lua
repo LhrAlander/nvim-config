@@ -1,9 +1,18 @@
-vim.o.number = true
-vim.o.ruler = true
+vim.cmd('autocmd!')
 vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding= 'utf-8'
+vim.opt.showcmd = false
+vim.opt.cmdheight = 1
+vim.opt.shell = 'zsh'
+
+vim.o.number = true
+vim.o.ruler = true
 vim.wo.number = true
 vim.wo.relativenumber = false
+vim.opt.ai = true
+vim.opt.si = true
 -- 高亮所在行
 vim.wo.cursorline = true
 -- 显示左侧图标指示列
@@ -50,7 +59,7 @@ vim.o.swapfile = false
 -- smaller updatetime
 vim.o.updatetime = 300
 -- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒，可根据需要设置
-vim.o.timeoutlen = 500
+vim.o.timeoutlen = 400
 -- split window 从下边和右边出现
 vim.o.splitbelow = true
 vim.o.splitright = true
