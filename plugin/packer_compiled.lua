@@ -109,10 +109,20 @@ _G.packer_plugins = {
     path = "/Users/linhr/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/linhr/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/linhr/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/linhr/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["indent-blankline.nvim"] = {
     loaded = true,

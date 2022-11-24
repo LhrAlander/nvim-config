@@ -54,6 +54,9 @@ function (use)
   use("tami5/lspsaga.nvim" )
   -- lsp
   use 'neovim/nvim-lspconfig'
+  -- git
+  use 'lewis6991/gitsigns.nvim'
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 end,
 {
   display = {
