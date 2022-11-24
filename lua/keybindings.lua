@@ -84,7 +84,7 @@
     mapbuf("n", "<leader>gp", "<cmd>Lspsaga show_line_diagnostics<CR>")
     mapbuf("n", "<leader>gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
     mapbuf("n", "<leader>gj", "<cmd>Lspsaga diagnostic_jump_next<CR>")
-    mapbuf("n", "<S-¬>", "<cmd>lua vim.diagnostic.formatting()<CR>")
+    mapbuf("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>")
   end
 
   -- cmp

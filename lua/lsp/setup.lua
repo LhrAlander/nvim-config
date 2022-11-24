@@ -6,7 +6,7 @@ end
 
 
 local on_attach = function(client, bufnr)
-   -- Enable completion triggered by <c-x><c-o>
+  -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   local map_fn = function(a1, a2, a3)
@@ -19,40 +19,73 @@ local lsp_flags = {
   debounce_text_change = 150
 }
 
+-- tsserver
 require('lspconfig')['tsserver'].setup({
   on_attach = on_attach,
   flags = lsp_flags,
-  filetypes = {"typescriptreact", "typescript"}
+  filetypes = { "typescriptreact", "typescript" },
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = "non-relative"
+    }
+  }
 })
 
 
+-- lua
 local runtime_path = vim.split(package.path, ';')
 require('lspconfig')['sumneko_lua'].setup({
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = runtime_path,
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
-                checkThirdParty = false,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
-    flags = lsp_flags,
-    on_attach = on_attach,
+  },
+  flags = lsp_flags,
+  on_attach = on_attach,
 })
 
+-- css/json
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp_config.cssls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+lsp_config.jsonls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 
+-- eslint
+lsp_config.eslint.setup({
+  on_attach = on_attach,
+})
+-- html
+lsp_config.html.setup({
+  on_attach = on_attach,
+})
+
+-- vue use volar only
+lsp_config.volar.setup({
+  -- enable Take Over Mode for more detail: https://github.com/johnsoncodehk/volar/blob/master/extensions/vscode-vue-language-features/README.md?plain=1#L28-L63
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+  on_attach = on_attach,
+})

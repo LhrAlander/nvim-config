@@ -3,7 +3,6 @@ if not status then
   vim.notify("似乎没有安装主题 neosolarized")
   return
 end
-print(n)
 
 n.setup({
   comment_italics = true,
