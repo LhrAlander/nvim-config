@@ -19,10 +19,10 @@
   map("n", "s=", "<C-w>=", opt)
 
   -- Option + hjkl move throw windows
-  map("n", "˙", "<C-w>h", opt)
-  map("n", "∆", "<C-w>j", opt)
-  map("n", "˚", "<C-w>k", opt)
-  map("n", "¬", "<C-w>l", opt)
+  map("n", "<C-h>", "<C-w>h", opt)
+  map("n", "<C-j>", "<C-w>j", opt)
+  map("n", "<C-k>", "<C-w>k", opt)
+  map("n", "<C-l>", "<C-w>l", opt)
 
   -- window resize Option + .,ui
   map("n", "≥", ":vertical resize -20<CR>", opt)
@@ -63,7 +63,7 @@
   -- bufferline
   map("n", "<S-H>", ":BufferLineCyclePrev<CR>", opt)
   map("n", "<S-L>", ":BufferLineCycleNext<CR>", opt)
-  map("n", "∑", ":Bdelete!<CR>", opt)
+  map("n", "<C-w>", ":Bdelete!<CR>", opt)
   map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
   map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
   map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
